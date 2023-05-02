@@ -51,7 +51,7 @@ function App() {
                     className="bg-red-500 mt-2 border-radius px-2  ml-3 h-14 rounded-[8px]"
                     onClick={() => deleteTodo(item.id)}
                   >
-                    Delete
+                    Delete hihi
                   </button>
                 </span>
               </li>
