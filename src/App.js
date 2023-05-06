@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AiFillDelete } from "react-icons/ai";
 function App() {
   const [value, setValue] = useState("");
   const [todo, setTodo] = useState([]);
@@ -10,9 +10,11 @@ function App() {
       toast.warn("Error");
     } else {
       toast.success("Success");
+      const capitalizedValue =
+        value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
       setTodo((prev) => [
         ...prev,
-        { id: value?.replace(/\s/g, " "), job: value },
+        { id: capitalizedValue.replace(/\s/g, " "), job: capitalizedValue },
       ]);
     }
     setValue("");
@@ -39,8 +41,10 @@ function App() {
           AddTodo
         </button>
       </div>
-      <div>
+      <div className="flex flex-row border-2 border-solid ">
         <h3>List</h3>
+      </div>
+      <div className="flex flex-row border-0 border-solid">
         <ul>
           {todo?.map((item, index) => {
             return (
@@ -48,10 +52,10 @@ function App() {
                 <span>{item.job}</span>
                 <span className="ml-3">
                   <button
-                    className="bg-red-500 mt-2 border-radius px-2  ml-3 h-14 rounded-[8px]"
+                    className=" mt-2 border-radius px-2  ml-3 h-14 rounded-[8px]"
                     onClick={() => deleteTodo(item.id)}
                   >
-                    Delete hehe
+                    <AiFillDelete />
                   </button>
                 </span>
               </li>
